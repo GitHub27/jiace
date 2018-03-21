@@ -112,7 +112,7 @@ body {
 }
 /*分页*/
 #pagination {
-  text-align: right;
+  /* text-align: right; */
   margin: 36px 0 61px;
 }
 #pagination a {
@@ -219,7 +219,7 @@ body {
   height: 44px;
   margin: 0 auto;
 }
-.logo {
+/* .logo {
   width: 125px;
   padding-top: 2px;
   margin-right: 10px;
@@ -235,7 +235,7 @@ body {
   margin-left: 15px;
   font-size: 12px;
   display: none;
-}
+} */
 .head_r{
 	width:550px;
 	text-align: right;
@@ -711,3 +711,47 @@ footer {
   color: #fff;
 }
 .toast {padding: 0 20px;height: 36px;line-height: 36px;position: fixed;top: 50%;left: 50%;margin-left: -100px;margin-top: -18px;background-color:#000000;z-index:200;-moz-opacity: 0.5;opacity:.50;filter: alpha(opacity=50);color: #FFFFFF;font-size: 16px;text-align: center;}
+
+/*头部导航*/
+.header-warp{
+  position: fixed;
+  width: 100%;
+  background-color: #fff;
+  height: 72px;
+  margin: 0 auto;
+  text-align: center;
+  left: 0;
+  right: 0;
+}
+.header-warp .header{
+  width: 1170px;
+  overflow: hidden;
+  /* display: table; */
+  margin: 0 auto;
+}
+.header-warp .header .header-item{
+  /* display: table-cell; */
+  display: inline-block;
+  height: 72px;
+  line-height: 72px;
+}
+.header-warp .menu{
+  margin-left: 223px;
+  /* overflow: hidden; */
+}
+.header-warp .menu span{
+  display: inline-block;
+  width: 92px;
+}
+.header-warp .menu span.active{
+  background-color: #f6f6f6;
+  border-top:2px solid #31c27c;
+}
+.login-menu{
+  float: right;
+}
+.index-banner{
+  width: 100%;
+  height: 380px;
+  background-image: url("/images/index-banner.jpg");
+}
