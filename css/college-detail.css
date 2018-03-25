@@ -1,0 +1,213 @@
+.collge-banner {
+    width: 1170px;
+    margin: 0 auto;
+    margin-top: 72px;
+    height: 380px;
+    background-image: url('/images/college-banner.jpg');
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+    position: relative;
+}
+
+.qrlogin-img {
+    float: right;
+    height: 380px;
+    line-height: 380px;
+    margin-right: 92px;
+}
+
+.qrlogin-img img {
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.college-logo-bg {
+    position: absolute;
+    bottom: -100px;
+    left: 90px;
+}
+
+.college-logo {
+    position: absolute;
+    bottom: -77px;
+    left: 135px;
+    width: 147px;
+    height: 147px;
+}
+
+.base-info {
+    width: 1170px;
+    margin: 0 auto;
+    padding: 26px 0px;
+}
+
+.base-info h2,
+.base-info p {
+    margin-left: 344px;
+}
+
+.base-info h2 {
+    font-size: 22px;
+    color: #323232;
+    padding-bottom: 15px;
+}
+
+.base-info p {
+    position: relative;
+    height: 19px;
+    line-height: 19px;
+    text-indent: -19px;
+    padding-left: 41px;
+    font-size: 0;
+}
+
+.base-info p span {
+    font-size: 14px;
+    color: #888;
+}
+
+.base-info p img {
+    position: absolute;
+    display: inline-block;
+    font-size: 0;
+    vertical-align: middle;
+    left: 0px;
+    top: 3px;
+}
+
+.default-container {
+    width: 1170px;
+    background-color: #fff;
+    margin: 0 auto;
+    padding: 29px 33px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.info-list {
+    font-size: 14px;
+    color: #333333;
+    margin-bottom: 35px;
+}
+
+.info-title {
+    font-size: 20px;
+    margin-bottom: 35px;
+}
+
+.course-list {
+    border-top: 1px solid #ebebeb;
+}
+
+.course-list .slist-head {
+    padding: 34px 0 25px;
+}
+
+.courses {
+    overflow: hidden;
+}
+
+.course-warp {
+    float: left;
+    display: block;
+    width: 539px;
+    height: 283px;
+    background-color: #f6f6f6;
+    border-radius: 5px;
+    padding: 25px 29px;
+    box-sizing: border-box;
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.course-warp hr {
+    color: #31c27c;
+    background-color: #31c27c;
+    width: 37px;
+    height: 2px;
+    margin-top: 18px;
+    border: 0;
+}
+
+.course-warp.odd {
+    float: right;
+}
+
+.c-line1 {
+    overflow: hidden;
+    color: #333;
+    height: 24px;
+    line-height: 24px;
+}
+
+.c-line1 p {
+    font-size: 14px;
+    float: right;
+}
+
+.c-line1 h4 {
+    font-size: 18px;
+    float: left;
+}
+
+.c-line {
+    font-size: 14px;
+}
+
+.c-line3 {
+    height: 38px;
+    overflow: hidden;
+}
+
+/* .c-line1, */
+
+.c-line2,
+.c-line3 {
+    padding-top: 24px;
+}
+
+.course-warp .w100 {
+    width: 539px;
+    margin-left: -29px;
+    background-color: #e6e6e6;
+    height: 1px;
+    margin-top: 30px;
+}
+
+.c-line5 {
+    overflow: hidden;
+    height: 75px;
+    line-height: 75px;
+}
+
+.c-line5 p {
+    float: right;
+}
+
+.c-line5 p img {
+    vertical-align: middle;
+}
+
+.c-line5 p.price {
+    float: left;
+}
+
+.price-now {
+    color: #ff605f;
+    font-size: 20px;
+}
+
+.price-old {
+    font-size: 16px;
+    color: #888;
+    text-decoration: line-through;
+    margin-left: 5px;
+}
+
+#pagination {
+    width: 1103px;
+    margin: 0 auto;
+    text-align: right;
+    padding: 29px 0;
+}
