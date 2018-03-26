@@ -29,4 +29,17 @@ $(function () {
         var pageNumber = page_index + 1;
         //queryNearbyCompany(pageNumber, pageSize, obj.more, obj.privince, obj.area);
     };
+
+    //菜单
+    $(".region .option-default,.region .option-container").click(function () {
+        $(".region .option-default,.region .option-container").removeClass('active').removeClass('region-active');
+        var _self = $(this);
+        if (_self.hasClass('option-default')) {
+            _self.addClass('active');
+        } else {
+            _self.addClass('region-active');
+        }
+    });
+    //城市区域
+
 })

@@ -38,6 +38,112 @@
     color: #888;
 }
 
+.option-warp {
+    margin-top: 4px;
+}
+
+.option-title {
+    float: left;
+    width: 87px;
+    color: #888;
+    font-size: 14px;
+    /* line-height: 2; */
+    margin-top: 10px;
+}
+
+.option-default {
+    float: left;
+    font-size: 14px;
+    /* line-height: 2; */
+    margin-top: 10px;
+    margin-right: 52px;
+    padding: 1px 9px;
+}
+
+.option-list {
+    /* line-height: 2; */
+    margin-left: 185px;
+}
+
+.option-list .option {
+    display: inline-block;
+    margin-right: 30px;
+    margin-top: 10px;
+    padding: 1px 9px;
+}
+
+.option-list .option-def {
+    margin-right: 52px;
+}
+
+.option-list span.active,
+.option-default.active {
+    background-color: #31c27c;
+    border-radius: 15px;
+    padding: 1px 9px;
+    color: #fff;
+    /* line-height: 1.5; */
+}
+
+.option-item {
+    /* display: none; */
+    position: absolute;
+    display: block;
+    left: 185px;
+    right: 0;
+    top: 51px;
+    background-color: #fafafa;
+    border: 1px solid #efefef;
+    overflow: hidden;
+    padding: 15px 0 0 22px;
+}
+
+.option-item span {
+    display: inline-block;
+    margin-bottom: 15px;
+    margin-right: 38px;
+}
+
+.region-selected {
+    background-color: #31c27c;
+    border-radius: 15px;
+    padding: 1px 9px;
+    color: #fff;
+}
+
+.option-container {
+    position: relative;
+    z-index: 2;
+    display: inline-block;
+    /* margin-right: 30px; */
+    margin-top: 10px;
+    padding: 1px 9px;
+    width: 68px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-bottom: 0;
+}
+
+.option-container.region-active {
+    background-color: #fafafa;
+    border: 1px solid #f4f4f4;
+    border-bottom: 0;
+    color: #31c27c;
+}
+
+.region {
+    margin-top: 10px;
+    position: relative;
+}
+
+.region .option-title,
+.region .option-default {
+    margin-top: 20px;
+}
+
 .course {
     padding: 15px 0;
     font-size: 14px;
@@ -65,7 +171,7 @@
 
 .region {
     padding: 0;
-    margin: 15px 0;
+    margin: 6px 0;
 }
 
 .region-option {
@@ -131,6 +237,11 @@
 
 .course-item {
     border-bottom: 1px solid #eaeaea;
+    cursor: pointer;
+}
+
+.course-detail:hover {
+    background-color: #fcfcfc;
 }
 
 .course-detail {

@@ -1321,3 +1321,69 @@ ul.tab {
 .company-address {
   padding-bottom: 8px;
 }
+
+.mark {
+  position: fixed;
+  z-index: 998;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #000000;
+  /* older safari/Chrome browsers */
+  -webkit-opacity: 0.6;
+  /* Netscape and Older than Firefox 0.9 */
+  -moz-opacity: 0.6;
+  /* Safari 1.x (pre WebKit!) 老式khtml内核的Safari浏览器*/
+  -khtml-opacity: 0.6;
+  /* IE9 + etc...modern browsers */
+  opacity: .6;
+  /* IE 4-9 */
+  filter: alpha(opacity=60);
+  /*This works in IE 8 & 9 too*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+  /*IE4-IE9*/
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=60);
+  display: none;
+}
+
+.fixed-login {
+  position: fixed;
+  top: 50%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  margin-top: -206px;
+  width: 382px;
+  height: 412px;
+  background-color: #fff;
+  border-radius: 5px;
+  z-index: 999;
+  text-align: center;
+  display: none;
+}
+
+.wecht-login-img {
+  width: 268px;
+  height: 268px;
+  margin: 0 auto;
+  padding-top: 42px;
+}
+
+.wecht-login-img img {
+  display: inline-block;
+  line-height: 100%;
+}
+
+.desc {
+  padding-top: 25px;
+  font-size: 16px;
+  color: #4c4c4c;
+}
+
+.tip {
+  padding-top: 16px;
+  font-size: 14px;
+  color: #888;
+}

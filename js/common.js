@@ -1,9 +1,14 @@
 ﻿(function ($) {
+    $(".mark").click(function () {
+        $(".mark,.fixed-login").hide();
+    });
+    $(".login-menu,.login-img").click(function () {
+        $(".mark,.fixed-login").show();
+    });
     $.extend({
         AkmiiAjaxPost: function (url, data, loading) {
             var dtd = $.Deferred();
-            if (loading) {
-            };
+            if (loading) {};
             $.ajax(url, {
                 type: "POST",
                 data: JSON.stringify(data),
@@ -12,22 +17,18 @@
                 xhrFields: {
                     withCredentials: true
                 },
-                beforeSend: function (request) {
-                },
+                beforeSend: function (request) {},
             }).then(function (d) {
-                if (loading) {
-                }
+                if (loading) {}
                 dtd.resolve(d);
             }, function (d) {
-                if (loading) {
-                }
+                if (loading) {}
                 dtd.reject(defaultError);
             });
             return dtd.promise();
         },
         AkmiiAjaxGet: function (url, data, loading) {
-            if (loading) {
-            }
+            if (loading) {}
             var dtd = $.Deferred();
             url = url + $.ObjectToParameter(data);
             var thisurl = url;
@@ -60,8 +61,7 @@
             arr.forEach(function (item, index) {
                 if (index == 0) {
                     result += "?" + item + "=" + obj[item] + "&";
-                }
-                else {
+                } else {
                     result += item + "=" + obj[item] + "&";
                 }
             });
