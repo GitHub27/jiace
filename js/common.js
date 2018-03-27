@@ -5,6 +5,26 @@
     $(".login-menu,.login-img").click(function () {
         $(".mark,.fixed-login").show();
     });
+    defaultError = "网络异常"
+    var apiprefix = "http://139.224.49.192:9006";
+    window.api_list = {
+        /**省份 */
+        province: apiprefix + "/api/common/area/province",
+    }
+    String.prototype.format = function (e) {
+        var result = this;
+        if (arguments.length > 0) {
+            if ((e.constructor + '').indexOf('Array') > 0) {
+                for (var i = 0; i < arguments.length; i++) {
+                    var reg = new RegExp("({)" + i + "(})", "g");
+                    result = result.replace(reg, arguments[i]);
+                }
+            } else if (typeof (e) === 'object') {
+
+            }
+        }
+        return result;
+    }
     $.extend({
         AkmiiAjaxPost: function (url, data, loading) {
             var dtd = $.Deferred();
@@ -30,7 +50,7 @@
         AkmiiAjaxGet: function (url, data, loading) {
             if (loading) {}
             var dtd = $.Deferred();
-            url = url + $.ObjectToParameter(data);
+            url = url //+ $.ObjectToParameter(data);
             var thisurl = url;
             if (url.indexOf('?') < 0) {
                 thisurl += '?_timestamp=' + (new Date()).getTime();
