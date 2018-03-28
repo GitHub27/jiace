@@ -9,15 +9,16 @@
     var apiprefix = "http://139.224.49.192:9006";
     window.api_list = {
         /**省份 */
-        province: apiprefix + "/api/common/area/province",
+        province: apiprefix + "/jiacerapps/api/common/area/province",
+        city: apiprefix + "/jiacerapps/api/common/area/city",
     }
     String.prototype.format = function (e) {
         var result = this;
         if (arguments.length > 0) {
             if ((e.constructor + '').indexOf('Array') > 0) {
-                for (var i = 0; i < arguments.length; i++) {
+                for (var i = 0; i < e.length; i++) {
                     var reg = new RegExp("({)" + i + "(})", "g");
-                    result = result.replace(reg, arguments[i]);
+                    result = result.replace(reg, e[i]);
                 }
             } else if (typeof (e) === 'object') {
 
@@ -28,7 +29,7 @@
     $.extend({
         AkmiiAjaxPost: function (url, data, loading) {
             var dtd = $.Deferred();
-            if (loading) {};
+            if (loading) { };
             $.ajax(url, {
                 type: "POST",
                 data: JSON.stringify(data),
@@ -37,20 +38,20 @@
                 xhrFields: {
                     withCredentials: true
                 },
-                beforeSend: function (request) {},
+                beforeSend: function (request) { },
             }).then(function (d) {
-                if (loading) {}
+                if (loading) { }
                 dtd.resolve(d);
             }, function (d) {
-                if (loading) {}
+                if (loading) { }
                 dtd.reject(defaultError);
             });
             return dtd.promise();
         },
         AkmiiAjaxGet: function (url, data, loading) {
-            if (loading) {}
+            if (loading) { }
             var dtd = $.Deferred();
-            url = url //+ $.ObjectToParameter(data);
+            url = url + $.ObjectToParameter(data);
             var thisurl = url;
             if (url.indexOf('?') < 0) {
                 thisurl += '?_timestamp=' + (new Date()).getTime();

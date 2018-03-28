@@ -58,6 +58,7 @@
     margin-top: 10px;
     margin-right: 52px;
     padding: 1px 9px;
+    cursor: pointer;
 }
 
 .option-list {
@@ -70,6 +71,7 @@
     margin-right: 30px;
     margin-top: 10px;
     padding: 1px 9px;
+    cursor: pointer;
 }
 
 .option-list .option-def {
@@ -125,6 +127,7 @@
     background-color: transparent;
     border: 1px solid transparent;
     border-bottom: 0;
+    cursor: pointer;
 }
 
 .option-container.region-active {

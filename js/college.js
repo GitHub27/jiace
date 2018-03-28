@@ -1,282 +1,107 @@
 $(function () {
-
+    var provinceCode = '',
+        cityCode = ''
+        ;
+    /**获取省数据 */
     function getProvince() {
-        // $.AkmiiAjaxGet(window.api_list.province, {}, false).then(function () {
-        //     console.log(0)
-        // })
-        var jsonData = [{
-                "areaCode": "110000",
-                "areaName": "北京市",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "120000",
-                "areaName": "天津市",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "130000",
-                "areaName": "河北省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "140000",
-                "areaName": "山西省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "150000",
-                "areaName": "内蒙古自治区",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "210000",
-                "areaName": "辽宁省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "220000",
-                "areaName": "吉林省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "230000",
-                "areaName": "黑龙江省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "310000",
-                "areaName": "上海市",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "320000",
-                "areaName": "江苏省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "330000",
-                "areaName": "浙江省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "340000",
-                "areaName": "安徽省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "350000",
-                "areaName": "福建省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "360000",
-                "areaName": "江西省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "370000",
-                "areaName": "山东省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "410000",
-                "areaName": "河南省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "420000",
-                "areaName": "湖北省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "430000",
-                "areaName": "湖南省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "440000",
-                "areaName": "广东省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "450000",
-                "areaName": "广西壮族自治区",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "460000",
-                "areaName": "海南省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "500000",
-                "areaName": "重庆市",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "510000",
-                "areaName": "四川省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "520000",
-                "areaName": "贵州省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "530000",
-                "areaName": "云南省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "540000",
-                "areaName": "西藏自治区",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "610000",
-                "areaName": "陕西省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "620000",
-                "areaName": "甘肃省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "630000",
-                "areaName": "青海省",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "640000",
-                "areaName": "宁夏回族自治区",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
-            },
-            {
-                "areaCode": "650000",
-                "areaName": "新疆维吾尔自治区",
-                "parentCode": null,
-                "areaLevel": null,
-                "parent": null,
-                "childList": null
+        $.AkmiiAjaxGet(window.api_list.province, {}, false).then(function (d) {
+            if (d.jsonData) {
+                var provinceStr = '';
+                var provinceTemplate = '<div data-areacode="{1}" data-areaname="{0}" class="option-container"><span class="option-head">{0}</span></div>';
+                d.jsonData.forEach(function (item) {
+                    provinceStr += provinceTemplate.format([item.areaName, item.areaCode]);
+                });
+                $("#province").html(provinceStr)
             }
-        ];
-        var provinceStr = '';
-        var provinceTemplate = '<div class="option-container"><span class="option-head">{0}</span></div>';
-        jsonData.forEach(function (item) {
-            provinceStr += provinceTemplate.format([item.areaName]);
-        });
-        $("#province").html(provinceStr)
-        console.log(provinceStr);
-    }
-    //getProvince();
+        }, function () {
 
+        })
+
+    }
+    function getCity(pcode, pname) {
+        $.AkmiiAjaxGet(window.api_list.city, { 'pcode': pcode }, false).then(function (d) {
+            if (d.jsonData) {
+                var cityStr = '';
+                var cityTemplate = '<span data-areacode="{1}" data-areaname="{0}">{0}</span>';
+                d.jsonData.forEach(function (item) {
+                    item.childList.forEach(function (item2) {
+                        cityStr += cityTemplate.format([item2.areaName, item2.areaCode]);
+                    });
+                });
+                $(".option-item").html('<span data-areacode="' + pcode + '" data-areaname="' + pname + '" class="region-def">不限</span>' + cityStr)
+            }
+        }, function () {
+
+        })
+    }
+    getProvince();
 
     //城市区域
-    $('.region').on('click', '.option-default,.option-container', function () {
-        $(".region .option-default,.region .option-container").removeClass('active').removeClass('region-active');
+    $('.region').on('click', '.option-default', function () {
+        $(".region .option-default").removeClass('active').removeClass('region-active');
         var _self = $(this);
         if (_self.hasClass('option-default')) {
             _self.addClass('active');
             $('.option-item').hide();
         } else {
-            _self.css('z-index', '4').siblings().css('z-index', '2');
-            _self.addClass('region-active');
-            $('.option-item').show();
+
         }
     });
+
+
+    //省区域
+    $('.region').on('click', '.option-container', function () {
+        var _self = $(this);
+        if (_self.hasClass('region-active')) {
+            _self.removeClass('region-active')
+            $('.option-item').hide();
+            return;
+        }
+        getCity(_self.data('areacode'), _self.data('areaname'));
+        $(".region .option-container").removeClass('active').removeClass('region-active');
+        var top = _self.offset().top;
+        if (top < 248) {
+            $('.option-item').css('top', '51px').show();
+        } else if (top < 301) {
+            $('.option-item').css('top', '104px').show();
+        } else {
+            $('.option-item').css('top', '155px').show();
+        }
+        _self.css('z-index', '4').siblings().css('z-index', '2');
+        _self.addClass('region-active');
+    })
+    //市区域
+    $('.option-item').on('click', 'span', function () {
+        var _self = $(this);
+        if (_self.hasClass('region-def')) {
+            $('.region .option-default').addClass('active');
+            _self.siblings().removeClass('region-selected');
+            _self.addClass('region-selected')
+        } else {
+            // cityCode=
+            $('.region .option-default').removeClass('active');
+            _self.siblings().removeClass('region-selected');
+            _self.addClass('region-selected')
+        }
+    })
+
+
+    // $("#province").mouseout(function (params) {
+    //     // setTimeout(function (params) {
+    //     //     $('.option-item').hide();
+    //     // }, 10);
+
+    // })
+    // $(".option-item").mouseover(function (e) {
+    //     e.stopPropagation();
+    //     e.preventDefault();
+    //     return false;
+    // })
+    // $('.region').on('mouseout', '.option-container', function () {
+    //     //$(".region .option-container").removeClass('active').removeClass('region-active');
+
+    // })
+
 
 
     //课程
