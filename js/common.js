@@ -11,6 +11,8 @@
         /**省份 */
         province: apiprefix + "/jiacerapps/api/common/area/province",
         city: apiprefix + "/jiacerapps/api/common/area/city",
+        course_base: apiprefix + "/jiacerapps/course/base/page",
+        course_filter: apiprefix + '/jiacerapps/api/school/pageSchoolwithLearn',
     }
     String.prototype.format = function (e) {
         var result = this;

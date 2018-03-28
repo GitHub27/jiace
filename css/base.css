@@ -1387,3 +1387,10 @@ ul.tab {
   font-size: 14px;
   color: #888;
 }
+.isnull{
+  margin: 120px 0 200px;
+  text-align: center;
+}
+.isnull img{
+  width: 20%;
+}
