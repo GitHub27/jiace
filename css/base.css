@@ -1390,6 +1390,7 @@ ul.tab {
 .isnull{
   margin: 120px 0 200px;
   text-align: center;
+  background-color: transparent;
 }
 .isnull img{
   width: 20%;

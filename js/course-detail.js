@@ -7,6 +7,8 @@ $(function () {
     });
     var pageNumber = 1;
     var pageSize = 12;
+    var courseid = $.getQueryStringByName('id')
+    getCourseDetail();
 
     function pagination(records) {
         $("#pagination").pagination(records, {
@@ -26,4 +28,22 @@ $(function () {
         var pageNumber = page_index + 1;
         //queryNearbyCompany(pageNumber, pageSize, obj.more, obj.privince, obj.area);
     };
+
+
+    //课程详情
+    function getCourseDetail() {
+        $.AkmiiAjaxGet(window.api_list.course_detail + courseid, {}, false).then(function (d) {
+            if (d.jsonData) {
+                var str = '';
+                var template = '<span class="option" data-courseid="{0}">{1}</span>';
+                d.jsonData.rows.forEach(function (item) {
+                    str += template.format([item.courseId, item.courseName]);
+                });
+                $(".course-detail-head").html(str)
+            }
+        }, function () {
+
+        })
+    }
+
 })

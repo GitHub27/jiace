@@ -5,7 +5,8 @@
     height: 380px;
     background-image: url('/images/college-banner.jpg');
     background-repeat: no-repeat;
-    background-position: 100% 100%;
+    /* background-position: 100% 100%; */
+    background-size: 100% 100%;
     position: relative;
 }
 
@@ -83,6 +84,9 @@
     box-sizing: border-box;
     margin-bottom: 20px;
 }
+.infos{
+    padding-bottom: 30px;
+}
 
 .info-list {
     font-size: 14px;
@@ -107,6 +111,9 @@
     overflow: hidden;
 }
 
+#coursesList{
+    overflow: hidden;
+}
 .course-warp {
     float: left;
     display: block;
@@ -119,6 +126,7 @@
     color: #333;
     font-size: 14px;
     margin-bottom: 24px;
+    cursor: pointer;
 }
 
 .course-warp hr {

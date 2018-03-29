@@ -8,7 +8,7 @@ $(function () {
         cityCodeSelected = '',
         courseIDSelected = '',
         pageIndex = 1,
-        pageSize = 10
+        pageSize = 2
         ;
     /**获取省数据 */
     function getProvince() {
@@ -58,22 +58,34 @@ $(function () {
         })
     }
     /**根据条件筛选 */
-    function courseFilter() {
-        $.AkmiiAjaxGet(window.api_list.course_filter, {
+    function courseFilter(iscb) {
+        $.AkmiiAjaxGet(window.api_list.college_filter, {
             courseId: courseIDSelected, pageIndex: pageIndex, pageSize: pageSize, province: provinceCodeSelected, city: cityCodeSelected
         }, false).then(function (d) {
             if (d.jsonData && d.jsonData.rows.length > 0) {
                 var str = '';
-                var template = '<div class="course-item"><div class="course-detail"><div class="course-column course-logo">\
+                var template = '<div class="course-item" data-id="{6}"><div class="course-detail"><div class="course-column course-logo">\
                 <img src="/images/course-logo.png"></div><div class="course-column"><p class="course-name">{0}<span class="course-online">\
-                <img src="/images/online.png">{4}</span></p><p class="course-info"><img src="/images/course-teacher.png">王老师、杨老师</p><p class="course-info">\
+                <img src="/images/online.png">{4}</span></p><p class="course-info"><img src="/images/course-teacher.png">{7}</p><p class="course-info">\
                 <img src="/images/course-phone.png">{1}</p><p class="course-info"><img src="/images/course-address.png">{2}</p></div>\
                 <div class="course-column score"><p><img src="/images/stars.png"></p>\
                 <p class="score-text">{3}</p></div></div></div>';
                 d.jsonData.rows.forEach(function (item) {
-                    str += template.format([item.schoolName, item.schoolPhone, item.schoolAddress, item.learnTypes, item.addAccount || 0, (item.logoUrl || '/images/course-logo.png')]);
+                    str += template.format([
+                        item.schoolName,
+                        item.schoolPhone,
+                        item.schoolAddress,
+                        item.learnTypes,
+                        item.addAccount || 0,
+                        (item.logoUrl || '/images/course-logo.png'),
+                        item.id,
+                        item.contacts
+                    ]);
                 });
-                $(".course-list").html(str)
+                $(".course-list").html(str);
+                if (!iscb) {
+                    pagination(d.jsonData.records);
+                }
             } else {
                 $(".course-list").html('<div class="isnull"><img src = "/images/null.png"></div>')
             }
@@ -81,6 +93,26 @@ $(function () {
 
         })
     }
+    function pagination(records) {
+        $("#pagination").pagination(records, {
+            num_edge_entries: 1,
+            num_display_entries: 4,
+            current_page: pageIndex - 1,
+            items_per_page: pageSize,
+            prev_text: "上一页",
+            next_text: "下一页",
+            callback: page_index
+        });
+    }
+
+
+    function page_index(page_index) {
+        console.log('页数', page_index);
+        pageIndex = page_index + 1;
+        var iscb = true;
+        courseFilter(iscb);
+        //queryNearbyCompany(pageNumber, pageSize, obj.more, obj.privince, obj.area);
+    };
     courseFilter();
     getCourseBase()
     getProvince();
@@ -179,31 +211,10 @@ $(function () {
         courseFilter()
     })
 
+    //查看详情
+    $('.course-list').on('click', '.course-item', function () {
+        window.location.href = '/html/college-detail.html?id=' + $(this).data('id');
+    })
 
-
-
-
-
-    var pageNumber = 1;
-    var pageSize = 12;
-
-    function pagination(records) {
-        $("#pagination").pagination(records, {
-            num_edge_entries: 1,
-            num_display_entries: 4,
-            current_page: pageNumber - 1,
-            items_per_page: pageSize,
-            prev_text: "上一页",
-            next_text: "下一页",
-            callback: page_index
-        });
-    }
-    pagination(100);
-
-    function page_index(page_index) {
-        console.log('页数', page_index);
-        var pageNumber = page_index + 1;
-        //queryNearbyCompany(pageNumber, pageSize, obj.more, obj.privince, obj.area);
-    };
 
 })

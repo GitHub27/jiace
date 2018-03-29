@@ -11,8 +11,11 @@
         /**省份 */
         province: apiprefix + "/jiacerapps/api/common/area/province",
         city: apiprefix + "/jiacerapps/api/common/area/city",
-        course_base: apiprefix + "/jiacerapps/course/base/page",
-        course_filter: apiprefix + '/jiacerapps/api/school/pageSchoolwithLearn',
+        course_base: apiprefix + "/jiacerapps/course/base/page/",
+        course_detail: apiprefix + '/jiacerapps/course/base/',
+        college_filter: apiprefix + '/jiacerapps/api/school/pageSchoolwithLearn',
+        college_detail: apiprefix + '/jiacerapps/api/school/',
+        college_courselist: apiprefix + '/jiacerapps/course/page',
     }
     String.prototype.format = function (e) {
         var result = this;
@@ -89,6 +92,14 @@
                 }
             });
             return result.substring(0, result.length - 1);
-        }
+        },
+        //获取url参数
+        getQueryStringByName: function (name) {
+            var result = location.search.match(new RegExp("[\?\&]" + name + "=([^\&]+)", "i"));
+            if (result == null || result.length < 1) {
+                return "";
+            }
+            return result[1];
+        },
     })
 })($)
