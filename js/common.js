@@ -12,10 +12,12 @@
         province: apiprefix + "/jiacerapps/api/common/area/province",
         city: apiprefix + "/jiacerapps/api/common/area/city",
         course_base: apiprefix + "/jiacerapps/course/base/page/",
+        course_usable: apiprefix + "/jiacerapps/course/base/usable/",
         course_detail: apiprefix + '/jiacerapps/course/base/',
         college_filter: apiprefix + '/jiacerapps/api/school/pageSchoolwithLearn',
         college_detail: apiprefix + '/jiacerapps/api/school/',
         college_courselist: apiprefix + '/jiacerapps/course/page',
+        schoollist_incourse: apiprefix + '/jiacerapps/api/school/pageByCourse'
     }
     String.prototype.format = function (e) {
         var result = this;

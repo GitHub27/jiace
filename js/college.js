@@ -44,11 +44,11 @@ $(function () {
         })
     }
     function getCourseBase() {
-        $.AkmiiAjaxGet(window.api_list.course_base, { pageIndex: 1, pageSize: 100 }, false).then(function (d) {
+        $.AkmiiAjaxGet(window.api_list.course_usable, {}, false).then(function (d) {
             if (d.jsonData) {
                 var str = '';
                 var template = '<span class="option" data-courseid="{0}">{1}</span>';
-                d.jsonData.rows.forEach(function (item) {
+                d.jsonData.forEach(function (item) {
                     str += template.format([item.courseId, item.courseName]);
                 });
                 $("#courseId").html(str)

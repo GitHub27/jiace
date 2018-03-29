@@ -133,6 +133,7 @@
 }
 
 .tablist span {
+    cursor: pointer;
     display: inline-block;
     width: 113px;
     font-size: 16px;
