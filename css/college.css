@@ -12,6 +12,9 @@
     border-bottom: 1px solid #eaeaea;
     padding-bottom: 15px;
 }
+.selected-text span,.clear-all{
+    cursor: pointer;
+}
 
 .filter-title {
     display: inline-block;

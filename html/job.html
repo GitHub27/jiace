@@ -43,87 +43,42 @@
                 已选条件:
             </span>
             <p class="selected-text">
-                <span>上海&nbsp;×</span>
+                <!-- <span>上海&nbsp;×</span> -->
             </p>
-            <span class="clear-all">清楚全部</span>
+            <span class="clear-all" style="display:none">清楚全部</span>
         </div>
-        <div class="course">
-            <span class="filter-title">
+        <div class="option-warp course-warp" id="serviceType">
+            <span class="option-title">
                 服务工种:
             </span>
-
-            <p class="course-option">
-                <span class="option-def active">不限</span>
-                <span>月嫂</span>
-                <span>育儿嫂</span>
-                <span>保姆</span>
-                <span>钟点工</span>
-                <span>老人陪护</span>
-                <span>医院护工</span>
-                <span>家庭管家</span>
-                <!-- <span>月嫂</span>
-                <span>育儿嫂</span>
-                <span>保姆</span>
-                <span>钟点工</span>
-                <span>老人陪护</span>
-                <span>医院护工</span>
-                <span>家庭管家</span> -->
+            <span class="option-default active" id="allCourse">
+                不限
+            </span>
+            <p class="option-list" id="serviceTypeList">
             </p>
         </div>
-        <div class="course">
-            <span class="filter-title">
+        <div class="option-warp course-warp" id="ageRange">
+            <span class="option-title">
                 年龄要求:
             </span>
-
-            <p class="course-option">
-                <span class="option-def active">不限</span>
-                <span>29岁以下</span>
-                <span>29~39岁</span>
+            <span class="option-default active" id="allCourse">
+                不限
+            </span>
+            <p class="option-list" id="ageRangeList">
             </p>
         </div>
-        <div class="course region">
-            <span class="filter-title">
+        <div class="option-warp region" id="income">
+            <span class="option-title">
                 薪资要求:
             </span>
-            <div class="course-option region-option">
-                <span class="option-def active">不限</span>
-                <div class="region-name active">按月</div>
-                <div class="region-name">按天</div>
-                <div class="region-name">按小时</div>
-            </div>
-            <div class="region-cities">
-                <span>不限</span>
-                <span>闵行区</span>
-            </div>
-        </div>
-        <div class="course">
-            <span class="filter-title">
-                服务区域:
+            <span class="option-default active" id="allRegion">
+                不限
             </span>
+            <div class="option-list" id="incomeList">
 
-            <p class="course-option">
-                <span class="option-def active">不限</span>
-                <span>上海</span>
-                <span>江苏</span>
-                <span>浙江</span>
-                <span>安徽</span>
-                <span>北京</span>
-                <span>天津</span>
-                <span>河北</span>
-                <span>上海</span>
-                <span>江苏</span>
-                <span>浙江</span>
-                <span>安徽</span>
-                <span>北京</span>
-                <span>天津</span>
-                <span>河北</span>
-                <span>上海</span>
-                <span>江苏</span>
-                <span>浙江</span>
-                <span>安徽</span>
-                <span>北京</span>
-                <span>天津</span>
-                <span>河北</span>
+            </div>
+            <p class="option-item">
+                <span class="region-def">不限</span>
             </p>
         </div>
     </div>
@@ -192,6 +147,16 @@
 
     </div>
     <div id="pagination"></div>
+    </div>
+    <!-- 登录弹框 -->
+    <div class="mark">
+    </div>
+    <div class="fixed-login">
+        <div class="wecht-login-img">
+            <img src="/images/wecht-login-img.png">
+        </div>
+        <p class="desc">扫描二维码进行微信登录</p>
+        <p class="tip">“扫一扫”就知道</p>
     </div>
     <div class="footer">
         <p class="company-address">上海家策教育科技有限公司 上海市徐汇区南丹东路300号亚都商务楼1201室</p>

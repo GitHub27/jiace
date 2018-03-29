@@ -1,26 +1,32 @@
-¶şÎ¬Âë
-µÈ¼¶£¬
-¹¤ÖÖ£¬
-·¢Ö¤»ú¹¹£¬
-Çå³ıÈ«²¿£¬
-µÇÂ¼µ¯¿ò£¬
-¸÷¸öÒ³ÃæµÄ²é¿´¸ü¶à£¬
-¿ÕÈ±Ò³£¬
-img¼ÓÔØ£¿
+ï»¿äºŒç»´ç 
+ç­‰çº§ï¼Œ
+å·¥ç§ï¼Œ
+å‘è¯æœºæ„ï¼Œ
+æ¸…é™¤å…¨éƒ¨ï¼Œ
+ç™»å½•å¼¹æ¡†ï¼Œ
+å„ä¸ªé¡µé¢çš„æŸ¥çœ‹æ›´å¤šï¼Œ
+ç©ºç¼ºé¡µï¼Œ
+imgæ‡’åŠ è½½ï¼Ÿ
+å›¾ç‰‡å‹ç¼©,
+title
+é¼ æ ‡è¦†ç›–æ ·å¼
+æ¸…é™¤å…¨éƒ¨çš„å†™æ³•æœ‰é—®é¢˜ï¼Œ
+é€‰æ‹©åŸå¸‚éœ€è¦ç¼“å­˜ï¼Œç›®å‰æ¿€æ´»çŠ¶æ€ä¹Ÿä¸å¯¹
 
 
 
 
-//Ñ§ÔºÁĞ±í
+
+//å­¦é™¢åˆ—è¡¨
     function getCourseList(iscb) {
         $.AkmiiAjaxGet(window.api_list.schoollist_incourse, { "courseId": courseid, 'pageIndex': pageNumber, 'pageSize': pageSize }, false).then(function (d) {
             if (d.jsonData) {
                 var str = '';
                 var template = '<div class="course-item"><div class="course-detail"><div class="course-column course-logo">\
-                <img src="/images/course-logo.png"></div><div class="course-column"><p class="course-name">¼Ò²ß½¡¿µÑ§Ôº</p><p class="course-info">\
-                <img src="/images/course-teacher.png">ÍõÀÏÊ¦¡¢ÑîÀÏÊ¦</p><p class="course-info"><img src="/images/course-phone.png">021-84188797</p>\
-                <p class="course-info"><img src="/images/course-address.png">ÉÏº£ÊĞĞì»ãÇøÄÏµ¤¶«Â·300ºÅÑÇ¶¼ÉÌÎñÂ¥1201ÊÒ</p></div><div class="course-column score">\
-                <p><img src="/images/stars.png"></p><p class="score-text">Ä¸Ó¤»¤Àí ÓıÓ¤Ê¦ ¼ÒÕş·şÎñÔ± ½¡¿µÕÕ»¤ ÑøÀÏ»¤ÀíÔ± ÃÚÈéÊ¦</p></div></div></div>';
+                <img src="/images/course-logo.png"></div><div class="course-column"><p class="course-name">å®¶ç­–å¥åº·å­¦é™¢</p><p class="course-info">\
+                <img src="/images/course-teacher.png">ç‹è€å¸ˆã€æ¨è€å¸ˆ</p><p class="course-info"><img src="/images/course-phone.png">021-84188797</p>\
+                <p class="course-info"><img src="/images/course-address.png">ä¸Šæµ·å¸‚å¾æ±‡åŒºå—ä¸¹ä¸œè·¯300å·äºšéƒ½å•†åŠ¡æ¥¼1201å®¤</p></div><div class="course-column score">\
+                <p><img src="/images/stars.png"></p><p class="score-text">æ¯å©´æŠ¤ç† è‚²å©´å¸ˆ å®¶æ”¿æœåŠ¡å‘˜ å¥åº·ç…§æŠ¤ å…»è€æŠ¤ç†å‘˜ æ³Œä¹³å¸ˆ</p></div></div></div>';
                 d.jsonData.rows.forEach(function (item) {
                     str += template.format([
                         d.jsonData.courseImg || "/images/course-detail-logo.png",
@@ -34,8 +40,8 @@ img¼ÓÔØ£¿
                     ])
                 });
                 $(".course-detail-head").replaceWith(str);
-                $("#outline .info-item").html(d.jsonData.courseBrief);//¼ò½é
-                $("#intro .info-item").html(d.jsonData.courseOutline);//´ó¸Ù
+                $("#outline .info-item").html(d.jsonData.courseBrief);//ç®€ä»‹
+                $("#intro .info-item").html(d.jsonData.courseOutline);//å¤§çº²
                 if (!iscb) {
                     pagination(d.jsonData.records);
                 }

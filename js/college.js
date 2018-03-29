@@ -43,6 +43,9 @@ $(function () {
 
         })
     }
+    /**
+     * 获取课程条件
+     */
     function getCourseBase() {
         $.AkmiiAjaxGet(window.api_list.course_usable, {}, false).then(function (d) {
             if (d.jsonData) {
@@ -57,6 +60,7 @@ $(function () {
 
         })
     }
+
     /**根据条件筛选 */
     function courseFilter(iscb) {
         $.AkmiiAjaxGet(window.api_list.college_filter, {
@@ -93,6 +97,9 @@ $(function () {
 
         })
     }
+    /**
+     * 分页
+     */
     function pagination(records) {
         $("#pagination").pagination(records, {
             num_edge_entries: 1,
@@ -104,8 +111,6 @@ $(function () {
             callback: page_index
         });
     }
-
-
     function page_index(page_index) {
         console.log('页数', page_index);
         pageIndex = page_index + 1;
@@ -113,31 +118,45 @@ $(function () {
         courseFilter(iscb);
         //queryNearbyCompany(pageNumber, pageSize, obj.more, obj.privince, obj.area);
     };
+
+    /**
+     * 切换显示“清除全部”
+     */
+    function toggleClearAll() {
+        if ($('.selected-text span').length >= 1) {
+            $('.clear-all').show();
+        } else {
+            $('.clear-all').hide();
+        }
+    }
+
     courseFilter();
     getCourseBase()
     getProvince();
 
 
+    /**清除全部 */
+    $('.clear-all').click(function () {
+        $('.selected-text').html('');
+        $('.clear-all').hide();
+        //不能这么写
+        $("#allCourse").click();
+        $("#allRegion").click();
+    });
+    /**
+     * 删除城市条件
+     */
     $('.selected').on('click', '._city', function () {
         $('.region .option-default').click();
+        toggleClearAll();
     })
+    /**
+     * 删除课程条件
+     */
     $('.selected').on('click', '._course', function () {
         $('.course-warp .option-default').click();
+        toggleClearAll();
     })
-
-    //城市区域-不限
-    $('.region').on('click', '.option-default', function () {
-        $(".region .option-default").removeClass('active').removeClass('region-active');
-        var _self = $(this);
-        cityCodeSelected = '';
-        provinceCodeSelected = '';
-        $('._city').remove();
-        courseFilter();
-        if (_self.hasClass('option-default')) {
-            _self.addClass('active');
-            $('.option-item').hide();
-        }
-    });
 
 
     //省区域
@@ -186,8 +205,25 @@ $(function () {
         }
         $('.option-item').hide();
         $('#province').find('.region-active').removeClass('region-active')
+        toggleClearAll();
         courseFilter()
     })
+
+    //城市区域-不限
+    $('.region').on('click', '.option-default', function () {
+        $(".region .option-default").removeClass('active').removeClass('region-active');
+        var _self = $(this);
+        cityCodeSelected = '';
+        provinceCodeSelected = '';
+        $('._city').remove();
+        courseFilter();
+        if (_self.hasClass('option-default')) {
+            _self.addClass('active');
+            $('.option-item').hide();
+        }
+        toggleClearAll();
+    });
+
 
     //课程
     $('.course-warp').on('click', '.option-default,.option', function () {
@@ -208,7 +244,8 @@ $(function () {
                 $(".selected-text").append("<span class='_course'>" + $(this).html() + "&nbsp;×</span>");
             }
         }
-        courseFilter()
+        toggleClearAll();
+        courseFilter();
     })
 
     //查看详情
