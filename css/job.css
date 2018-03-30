@@ -370,3 +370,10 @@
 #pagination {
     padding: 0 0 75px;
 }
+.ml196{
+    margin-left: 196px;
+}
+
+#job-detail-warp{
+    min-height: 400px;
+}

@@ -33,7 +33,7 @@ $(function () {
                         cityStr += cityTemplate.format([item2.areaName, item2.areaCode]);
                     });
                 });
-                $(".option-item").html('<span  data-pcode="' + pcode + '" data-areacode="' + pcode + '" data-areaname="' + pname + '" class="region-def">不限</span>' + cityStr)
+                $(".option-item").html('<span  data-pcode="' + pcode + '" data-areacode="' + pcode + '" data-areaname="' + pname + '" class="region-def">全部</span>' + cityStr)
             }
         }, function () {
 
@@ -65,7 +65,7 @@ $(function () {
             if (d.jsonData && d.jsonData.rows.length > 0) {
                 var str = '';
                 var template = '<div class="course-item" data-id="{6}"><div class="course-detail"><div class="course-column course-logo">\
-                <img src="/images/course-logo.png"></div><div class="course-column"><p class="course-name">{0}<span class="course-online">\
+                <img src="{5}"></div><div class="course-column"><p class="course-name">{0}<span class="course-online">\
                 <img src="/images/online.png">{4}</span></p><p class="course-info"><img src="/images/course-teacher.png">{7}</p><p class="course-info">\
                 <img src="/images/course-phone.png">{1}</p><p class="course-info"><img src="/images/course-address.png">{2}</p></div>\
                 <div class="course-column score"><p><img src="/images/stars.png"></p>\
@@ -76,8 +76,8 @@ $(function () {
                         item.schoolPhone,
                         item.schoolAddress,
                         item.learnTypes,
-                        item.addAccount || 0,
-                        (item.logoUrl || '/images/course-logo.png'),
+                        item.orderNum || 0,
+                        (item.logoUrl || '/images/colloge-logo.png'),
                         item.id,
                         item.contacts
                     ]);
@@ -108,7 +108,6 @@ $(function () {
         });
     }
     function page_index(page_index) {
-        console.log('页数', page_index);
         pageIndex = page_index + 1;
         var iscb = true;
         courseFilter(iscb);
@@ -142,11 +141,11 @@ $(function () {
         $(".option-item").hide();
         //启动“不限”
         $(".option-default").addClass('active');
-        provinceCodeSelected = '',
-            cityCodeSelected = '',
-            courseIDSelected = '',
-            pageIndex = 1,
-            courseFilter();
+        provinceCodeSelected = '';
+        cityCodeSelected = '';
+        courseIDSelected = '';
+        pageIndex = 1;
+        courseFilter();
     });
 
     /**
@@ -195,11 +194,14 @@ $(function () {
         $("#region .option-container").removeClass('active').removeClass('region-active');
         var top = _self.offset().top;
         var offsetTop = 163 + $("#courseId").height();
-        if (top <= offsetTop) {
+        var top = _self.offset().top,
+            baseOffsetTop = $($('#province .option-container')[1]).offset().top,
+            baseOffsetTop = baseOffsetTop || 227;
+        if (top <= baseOffsetTop) {
             $('.option-item').css('top', '51px').show();
-        } else if (top <= offsetTop + 53) {
+        } else if (top <= baseOffsetTop + 53) {
             $('.option-item').css('top', '104px').show();
-        } else if (top <= offsetTop + (53 * 2)) {
+        } else if (top <= baseOffsetTop + (53 * 2)) {
             $('.option-item').css('top', '157px').show();
         } else {
             $('.option-item').css('top', '210px').show();
