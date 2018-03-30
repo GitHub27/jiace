@@ -3,7 +3,7 @@ $(function () {
         cityCodeSelected = '',
         courseIDSelected = '',
         pageIndex = 1,
-        pageSize = 20
+        pageSize = 10
         ;
     /**获取省数据 */
     function getProvince() {
@@ -152,7 +152,6 @@ $(function () {
         pageIndex = page_index + 1;
         var iscb = true;
         jobFilter(iscb);
-        //queryNearbyCompany(pageNumber, pageSize, obj.more, obj.privince, obj.area);
     };
 
     /**

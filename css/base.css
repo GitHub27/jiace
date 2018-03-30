@@ -1395,3 +1395,7 @@ ul.tab {
 .isnull img{
   width: 20%;
 }
+.footer a{
+  color: #fff;
+  margin-left: 20px;
+}
