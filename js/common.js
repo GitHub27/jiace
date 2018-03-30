@@ -17,13 +17,14 @@
         college_filter: apiprefix + '/jiacerapps/api/school/pageSchoolwithLearn',
         college_detail: apiprefix + '/jiacerapps/api/school/',
         college_courselist: apiprefix + '/jiacerapps/course/page',
+        college_qr: apiprefix + '/jiacerapps/api/school/qrcode/',
         schoollist_incourse: apiprefix + '/jiacerapps/api/school/pageByCourse',
         job_age_range: apiprefix + '/jiacerapps/api/gs/bridge/ageRange',//年龄条件
         job_city: apiprefix + '/jiacerapps/api/gs/bridge/city',//城市条件
         job_province: apiprefix + '/jiacerapps/api/gs/bridge/province',//省条件
         job_service_income: apiprefix + '/jiacerapps/api/gs/bridge/serviceIncome',//薪资条件
         job_service_type: apiprefix + '/jiacerapps/api/gs/bridge/serviceType',//工种条件
-        job_list: apiprefix + '/jiacerapps/api/gs/bridge/job',//工作查询        
+        job_list: apiprefix + '/jiacerapps/api/gs/bridge/job',//工作查询
     }
     String.prototype.format = function (e) {
         var result = this;

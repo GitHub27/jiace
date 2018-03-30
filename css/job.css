@@ -284,7 +284,8 @@
     font-size: 14px;
 }
 
-.job-info-main p.mechanism span {
+.job-info-main p.mechanism a {
+    cursor: pointer;
     text-decoration: underline;
 }
 

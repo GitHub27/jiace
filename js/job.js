@@ -3,7 +3,7 @@ $(function () {
         cityCodeSelected = '',
         courseIDSelected = '',
         pageIndex = 1,
-        pageSize = 2
+        pageSize = 20
         ;
     /**获取省数据 */
     function getProvince() {
@@ -19,7 +19,6 @@ $(function () {
         }, function () {
 
         })
-
     }
     /**获取城市数据 */
     function getCity(pcode, pname) {
@@ -28,11 +27,9 @@ $(function () {
                 var cityStr = '';
                 var cityTemplate = '<span data-pcode="' + pcode + '" data-areacode="{1}" data-areaname="{0}">{0}</span>';
                 d.jsonData.forEach(function (item) {
-                    item.childList.forEach(function (item2) {
-                        cityStr += cityTemplate.format([item2.areaName, item2.areaCode]);
-                    });
+                    cityStr += cityTemplate.format([item.areaName, item.areaCode]);
                 });
-                $(".option-item").html('<span  data-pcode="' + pcode + '" data-areacode="' + pcode + '" data-areaname="' + pname + '" class="region-def">不限</span>' + cityStr)
+                $("#region .option-item").html('<span  data-pcode="' + pcode + '" data-areacode="' + pcode + '" data-areaname="' + pname + '" class="region-def">不限</span>' + cityStr)
             }
         }, function () {
 
@@ -81,16 +78,17 @@ $(function () {
         $.AkmiiAjaxGet(window.api_list.job_service_income, {}, false).then(function (d) {
             if (d.jsonData) {
                 var str = '';
-                var template = '<span class="option" data-ageid="{0}">{1}</span>';
+                var template = '<div data-areacode="{0}" data-areaname="{1}" class="option-container"><span class="option-head">{1}</span></div>';
                 d.jsonData.forEach(function (item) {
                     str += template.format([item.id, item.value]);
                     var str2 = '';
-                    var template2 = '<p class="option-item"><span class="region-def">不限</span></p>';
+                    var template2 = '<span class="option" data-courseid="{0}">{1}</span>';
                     item.ceList.forEach(function (item2) {
-
+                        str2 += template2.format([item2.id, item2.value]);
                     });
+                    $("#incomeItemList").append('<p class="option-item"><span class="region-def">不限</span>' + str2 + "</p>");
                 });
-                $("#ageRangeList").html(str)
+                $("#incomeList").html(str)
             }
         }, function () {
 
@@ -98,36 +96,38 @@ $(function () {
     }
 
     /**根据条件筛选 */
-    function courseFilter(iscb) {
-        $.AkmiiAjaxGet(window.api_list.college_filter, {
-            courseId: courseIDSelected, pageIndex: pageIndex, pageSize: pageSize, province: provinceCodeSelected, city: cityCodeSelected
+    function jobFilter(iscb) {
+        $.AkmiiAjaxGet(window.api_list.job_list, {
+            showMore: 'yes', pageIndex: pageIndex, pageSize: pageSize, province: provinceCodeSelected, city: cityCodeSelected,
+            serviceType: '', age: '', salary: '', salaryType: ''
         }, false).then(function (d) {
             if (d.jsonData && d.jsonData.rows.length > 0) {
                 var str = '';
-                var template = '<div class="course-item" data-id="{6}"><div class="course-detail"><div class="course-column course-logo">\
-                <img src="/images/course-logo.png"></div><div class="course-column"><p class="course-name">{0}<span class="course-online">\
-                <img src="/images/online.png">{4}</span></p><p class="course-info"><img src="/images/course-teacher.png">{7}</p><p class="course-info">\
-                <img src="/images/course-phone.png">{1}</p><p class="course-info"><img src="/images/course-address.png">{2}</p></div>\
-                <div class="course-column score"><p><img src="/images/stars.png"></p>\
-                <p class="score-text">{3}</p></div></div></div>';
+                var template = '<div class="job-detail"><div class="job-info-main"><h3>{0}</h3>\
+                <p class="salary">工资范围：<span>{1}{2}</span></p><p>年龄要求：<span>{3}</span></p>\
+                <p class="mechanism">发布机构:<a href="{4}">{5}</a></p></div ><div class="job-desc"><span>岗位要求：</span>\
+                <p>{6}</p></div>\
+                <div class="teacher"><img src="/images/phone.png">{7}<div class="teacher-phone"><span class="triangle"></span><p>联系电话：</p>\
+                <p>{8}</p></div></div></div>';
                 d.jsonData.rows.forEach(function (item) {
                     str += template.format([
-                        item.schoolName,
-                        item.schoolPhone,
-                        item.schoolAddress,
-                        item.learnTypes,
-                        item.addAccount || 0,
-                        (item.logoUrl || '/images/course-logo.png'),
-                        item.id,
-                        item.contacts
+                        item.positionName,
+                        item.salary,
+                        item.salaryTypeValue,
+                        item.age,
+                        item.websiteUrl,
+                        item.websiteName,
+                        item.demand,
+                        item.loginName,
+                        item.telephone,
                     ]);
                 });
-                $(".course-list").html(str);
+                $("#job-detail-warp").html(str);
                 if (!iscb) {
                     pagination(d.jsonData.records);
                 }
             } else {
-                $(".course-list").html('<div class="isnull"><img src = "/images/null.png"></div>')
+                $("#job-detail-warp").html('<div class="isnull"><img src = "/images/null.png"></div>')
             }
         }, function () {
 
@@ -151,7 +151,7 @@ $(function () {
         console.log('页数', page_index);
         pageIndex = page_index + 1;
         var iscb = true;
-        courseFilter(iscb);
+        jobFilter(iscb);
         //queryNearbyCompany(pageNumber, pageSize, obj.more, obj.privince, obj.area);
     };
 
@@ -166,11 +166,16 @@ $(function () {
         }
     }
 
-    courseFilter();
+    jobFilter();
     getServiceTypeList()
     getAgeRangeList();
+    getIncomeList();
     getProvince();
 
+    $("#serviceType,#ageRange").on('click', '.option,.option-default', function () {
+        $('.option-item').hide();
+        $('.option-container').removeClass('region-active');
+    });
 
     /**清除全部 */
     $('.clear-all').click(function () {
@@ -195,33 +200,26 @@ $(function () {
         toggleClearAll();
     })
 
+    //薪资大类
+    $("#incomeList").on('click', '.option-container', function () {
+        $('.option-item').hide();
+        $('.option-container').removeClass('region-active').css('z-index', '2');
 
-    //省区域
-    $('.region').on('click', '.option-container', function () {
-        var _self = $(this);
+        var _self = $(this),
+            _index = _self.index()
+        console.log(_index)
+        $("#incomeItemList .option-item").eq(_index).show().siblings().hide();
         if (_self.hasClass('region-active')) {
             _self.removeClass('region-active')
             $('.option-item').hide();
             return;
         }
-        getCity(_self.data('areacode'), _self.data('areaname'));
-        $(".region .option-container").removeClass('active').removeClass('region-active');
-        var top = _self.offset().top;
-        var offsetTop = 163 + $("#courseId").height();
-        if (top <= offsetTop) {
-            $('.option-item').css('top', '51px').show();
-        } else if (top <= offsetTop + 53) {
-            $('.option-item').css('top', '104px').show();
-        } else if (top <= offsetTop + (53 * 2)) {
-            $('.option-item').css('top', '157px').show();
-        } else {
-            $('.option-item').css('top', '210px').show();
-        }
+        _self.addClass('region-active').siblings().removeClass('region-active');
         _self.css('z-index', '4').siblings().css('z-index', '2');
-        _self.addClass('region-active');
-    })
-    //市区域
-    $('.option-item').on('click', 'span', function () {
+    });
+
+    //薪资小类：待完成
+    $('#incomeItemList .option-item').on('click', 'span', function () {
         var _self = $(this);
         cityCodeSelected = _self.data('areacode')
         provinceCodeSelected = _self.data('pcode')
@@ -243,20 +241,73 @@ $(function () {
         $('.option-item').hide();
         $('#province').find('.region-active').removeClass('region-active')
         toggleClearAll();
-        courseFilter()
+        jobFilter()
+    })
+
+    //省区域
+    $('#province').on('click', '.option-container', function () {
+        var _self = $(this);
+        if (_self.hasClass('region-active')) {
+            _self.removeClass('region-active')
+            $('.option-item').hide();
+            return;
+        }
+        $('.option-item').hide();
+        $('.option-container').removeClass('region-active').css('z-index', '2');
+
+
+        getCity(_self.data('areacode'), _self.data('areaname'));
+        $("#region .option-container").removeClass('active').removeClass('region-active');
+        var top = _self.offset().top;
+        if (top <= 290) {
+            $('#region .option-item').css('top', '51px').show();
+        } else if (top <= 290 + 53) {
+            $('#region .option-item').css('top', '104px').show();
+        } else if (top <= 290 + 53 * 2) {
+            $('#region .option-item').css('top', '157px').show();
+        } else {
+            $('#region .option-item').css('top', '210px').show();
+        }
+        _self.css('z-index', '4').siblings().css('z-index', '2');
+        _self.addClass('region-active');
+    })
+    //市区域
+    $('.cities').on('click', 'span', function () {
+        var _self = $(this);
+        cityCodeSelected = _self.data('areacode')
+        provinceCodeSelected = _self.data('pcode')
+        var citySelected = $(".selected-text").find('._city')
+        if (citySelected.length > 0) {
+            citySelected.replaceWith("<span class='_city'>" + _self.data('areaname') + "&nbsp;×</span>");
+        } else {
+            $(".selected-text").append("<span class='_city'>" + _self.data('areaname') + "&nbsp;×</span>");
+        }
+        if (_self.hasClass('region-def')) {
+            $('#region .option-default').addClass('active');
+            _self.siblings().removeClass('region-selected');
+            _self.addClass('region-selected')
+        } else {
+            $('#region .option-default').removeClass('active');
+            _self.siblings().removeClass('region-selected');
+            _self.addClass('region-selected')
+        }
+        $('.option-item').hide();
+        $('#province').find('.region-active').removeClass('region-active')
+        toggleClearAll();
+        jobFilter()
     })
 
     //城市区域-不限
-    $('.region').on('click', '.option-default', function () {
-        $(".region .option-default").removeClass('active').removeClass('region-active');
+    $('#region').on('click', '.option-default', function () {
+        $("#region .option-default").removeClass('active').removeClass('region-active');
         var _self = $(this);
         cityCodeSelected = '';
         provinceCodeSelected = '';
         $('._city').remove();
-        courseFilter();
+        jobFilter();
         if (_self.hasClass('option-default')) {
             _self.addClass('active');
-            $('.option-item').hide();
+            $('#region .option-item').hide();
         }
         toggleClearAll();
     });
@@ -282,7 +333,7 @@ $(function () {
             }
         }
         toggleClearAll();
-        courseFilter();
+        jobFilter();
     })
 
     //查看详情

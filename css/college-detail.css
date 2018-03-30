@@ -11,15 +11,25 @@
 }
 
 .qrlogin-img {
+    display: none;    
     float: right;
     height: 380px;
     line-height: 380px;
     margin-right: 92px;
+    position: relative;
 }
 
-.qrlogin-img img {
+.qrlogin-img .qrlogin-img-bg {
     cursor: pointer;
     vertical-align: middle;
+}
+
+#college-qr{
+    position:absolute;
+    top:90px;
+    right: 30px;
+    width: 160px;
+    height: 160px;
 }
 
 .college-logo-bg {

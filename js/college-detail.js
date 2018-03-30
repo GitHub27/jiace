@@ -6,6 +6,7 @@ $(function () {
     var pageSize = 20;
     getCollegeDetail();
     getCourseList();
+    getCollegeQR();
 
     function pagination(records) {
         $("#pagination").pagination(records, {
@@ -24,6 +25,18 @@ $(function () {
         pageNumber = page_index + 1;
         getCourseList(true);
     };
+
+
+    /**二维码 */
+    function getCollegeQR() {
+        $.AkmiiAjaxGet(window.api_list.college_qr + collegeID, { id: collegeID }, false).then(function (d) {
+            if (d.result) {
+                $("#college-qr").attr('src', d.result);
+                $(".qrlogin-img").show();
+            }
+        }, function () {
+        })
+    }
 
     /**学院详情 */
     function getCollegeDetail() {
