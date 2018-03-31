@@ -60,7 +60,7 @@ $(function () {
     /**课程列表 */
     function getCourseList(iscb) {
         $.AkmiiAjaxGet(window.api_list.college_courselist, { 'institutionInfoId': collegeID, 'pageIndex': pageNumber, 'pageSize': pageSize }, false).then(function (d) {
-            if (!d.jsonData) {
+            if (d.jsonData) {
                 var str = '';
                 var template = '<a href="/html/course-detail.html?id={7}" class="course-warp {0}"><div class="c-line1"><h4>{1}</h4><p><img src="/images/online.png">\
                 <span>{6}</span></p></div><hr><div class="c-line2">适合工种：{2}</div><div class="c-line3">{3}</div>\
