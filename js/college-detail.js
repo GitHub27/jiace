@@ -3,7 +3,7 @@ $(function () {
 
     var collegeID = $.getQueryStringByName('id')
     var pageNumber = 1;
-    var pageSize = 20;
+    var pageSize = 10;
     getCollegeDetail();
     getCourseList();
     getCollegeQR();
@@ -44,9 +44,15 @@ $(function () {
             if (d.jsonData) {
                 var base_info = '<div class="base-info"><h2>' + d.jsonData.schoolName + '</h2><p><img src="/images/peple1.png"><span>' + d.jsonData.contacts + '&nbsp;&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;&nbsp;' + d.jsonData.contactPhone + '&nbsp;&nbsp;&nbsp;&nbsp; / &nbsp;&nbsp;&nbsp;&nbsp;' + d.jsonData.schoolAddressWholeText + '</span></p></div>'
                 $('.base-info').replaceWith(base_info);
-                $('.infos').append(d.jsonData.schoolBrief);
-                $("#logoUrl").attr('src', d.jsonData.logoUrl)
-                $('.collge-banner').css('background-image', 'url("' + d.jsonData.schoolBanner.replace('0|', '') + '")')
+                $('.infos').append(d.jsonData.schoolBrief || '');
+
+                var img = new Image();
+                img.src = d.jsonData.logoUrl;
+                img.onload = function () {
+                    $("#logoUrl").attr('src', d.jsonData.logoUrl);
+                    img.onload = null;
+                }
+                d.jsonData.schoolBanner && $('.collge-banner').css('background-image', 'url("' + d.jsonData.schoolBanner.replace('0|', '') + '")')
             }
         }, function () {
         })
@@ -54,7 +60,7 @@ $(function () {
     /**课程列表 */
     function getCourseList(iscb) {
         $.AkmiiAjaxGet(window.api_list.college_courselist, { 'institutionInfoId': collegeID, 'pageIndex': pageNumber, 'pageSize': pageSize }, false).then(function (d) {
-            if (d.jsonData) {
+            if (!d.jsonData) {
                 var str = '';
                 var template = '<a href="/html/course-detail.html?id={7}" class="course-warp {0}"><div class="c-line1"><h4>{1}</h4><p><img src="/images/online.png">\
                 <span>{6}</span></p></div><hr><div class="c-line2">适合工种：{2}</div><div class="c-line3">{3}</div>\
@@ -74,6 +80,8 @@ $(function () {
                 if (!iscb) {
                     pagination(d.jsonData.records);
                 }
+            } else {
+                $("#coursesList").html('<div class="isnull"><img src = "/images/null.png"></div>')
             }
         }, function () {
 

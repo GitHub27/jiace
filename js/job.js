@@ -18,6 +18,8 @@ $(function () {
                     provinceStr += provinceTemplate.format([item.areaName, item.areaCode]);
                 });
                 $("#province").html(provinceStr)
+            } else {
+                $("#incomeList").html('<div class="option-container disabled"><span class="option-head">&nbsp;</span></div>')
             }
         }, function () {
 
@@ -51,6 +53,9 @@ $(function () {
                 });
                 $("#serviceTypeList").html(str)
             }
+            else {
+                $("#serviceTypeList").html('<span class="option disabled">&nbsp;</span>')
+            }
         }, function () {
 
         })
@@ -68,6 +73,8 @@ $(function () {
                     str += template.format([item.id, item.value]);
                 });
                 $("#ageRangeList").html(str)
+            } else {
+                $("#ageRangeList").html('<span class="option disabled">&nbsp;</span>')
             }
         }, function () {
 
@@ -92,6 +99,9 @@ $(function () {
                     $("#incomeItemList").append('<p class="option-item"><span data-id="" data-pid="' + item.id + '" data-name="' + item.value + '" class="region-def">不限</span>' + str2 + "</p>");
                 });
                 $("#incomeList").html(str)
+            }
+            else {
+                $("#incomeList").html('<div class="option-container disabled"><span class="option-head">&nbsp;</span></div>')
             }
         }, function () {
 
@@ -120,12 +130,16 @@ $(function () {
                 <div class="teacher"><img src="/images/phone.png">{7}<div class="teacher-phone"><span class="triangle"></span><p>联系电话：</p>\
                 <p>{8}</p></div></div></div>';
                 d.jsonData.rows.forEach(function (item) {
+                    var salary = "";
+                    if (item.salary != null) {
+                        salary = $.RetainedDecimalPlacesNF(item.salary);
+                    }
                     str += template.format([
                         item.positionName,
-                        item.salary,
+                        salary,
                         item.salaryTypeValue,
                         item.age,
-                        item.websiteUrl,
+                        'http://' + item.websiteUrl + '/job.html',
                         item.websiteName,
                         item.demand,
                         item.loginName,
@@ -263,17 +277,22 @@ $(function () {
 
     //薪资大类
     $("#incomeList").on('click', '.option-container', function () {
-        $('.option-item').hide();
-        $('.option-container').removeClass('region-active').css('z-index', '2');
         var _self = $(this),
             _index = _self.index(),
-            _isactive = _self.hasClass('region-active')
-        $("#incomeItemList .option-item").eq(_index).show().siblings().hide();
+            _isactive = _self.hasClass('region-active');
+        var _self = $(this);
+        if (_self.hasClass('disabled')) {
+            return;
+        }
         if (_isactive) {
             _self.removeClass('region-active')
             $('.option-item').hide();
             return;
         }
+
+        $('.option-item').hide();
+        $('.option-container').removeClass('region-active').css('z-index', '2');
+        $("#incomeItemList .option-item").eq(_index).show().siblings().hide();
         _self.addClass('region-active').siblings().removeClass('region-active');
         _self.css('z-index', '4').siblings().css('z-index', '2');
     });
@@ -322,6 +341,9 @@ $(function () {
     //省区域
     $('#province').on('click', '.option-container', function () {
         var _self = $(this);
+        if (_self.hasClass('disabled')) {
+            return;
+        }
         if (_self.hasClass('region-active')) {
             _self.removeClass('region-active')
             $('.option-item').hide();
@@ -329,7 +351,6 @@ $(function () {
         }
         $('.option-item').hide();
         $('.option-container').removeClass('region-active').css('z-index', '2');
-
 
         getCity(_self.data('areacode'), _self.data('areaname'));
         $("#region .option-container").removeClass('active').removeClass('region-active');
@@ -353,6 +374,7 @@ $(function () {
     //市区域
     $('.cities').on('click', 'span', function () {
         var _self = $(this);
+        $('#allRegion').removeClass('active');
         cityCodeSelected = _self.data('areacode')
         provinceCodeSelected = _self.data('pcode')
         var citySelected = $(".selected-text").find('._city')
@@ -362,13 +384,14 @@ $(function () {
             $(".selected-text").append("<span class='_city'>" + _self.data('areaname') + "&nbsp;×</span>");
         }
         if (_self.hasClass('region-def')) {
-            $('#region .option-default').addClass('active');
-            _self.siblings().removeClass('region-selected');
-            _self.addClass('region-selected')
+            //$('#region .option-default').addClass('active');
+            //选中的城市，不标记颜色，因为下次重新填充html
+            // _self.siblings().removeClass('region-selected');
+            // _self.addClass('region-selected')
         } else {
-            $('#region .option-default').removeClass('active');
-            _self.siblings().removeClass('region-selected');
-            _self.addClass('region-selected')
+            //$('#region .option-default').removeClass('active');
+            // _self.siblings().removeClass('region-selected');
+            // _self.addClass('region-selected')
         }
         $('.option-item').hide();
         $('#province').find('.region-active').removeClass('region-active')
@@ -394,6 +417,9 @@ $(function () {
     //服务工种
     $('#serviceType').on('click', '.option-default,.option', function () {
         var _self = $(this);
+        if (_self.hasClass('disabled')) {
+            return;
+        }
         $('#serviceType').find('.option-default,.option').removeClass('active');
         _self.addClass('active');
         //不限分类
@@ -417,6 +443,10 @@ $(function () {
     //年龄要求
     $('#ageRange').on('click', '.option-default,.option', function () {
         var _self = $(this);
+        var _self = $(this);
+        if (_self.hasClass('disabled')) {
+            return;
+        }
         $('#ageRange').find('.option-default,.option').removeClass('active');
         _self.addClass('active');
         //不限分类

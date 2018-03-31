@@ -57,7 +57,7 @@ $(function () {
                     d.jsonData.orderNum,
                     d.jsonData.courseSuitableJob,
                     d.jsonData.totalHours,
-                    d.jsonData.authenticateGrade,
+                    $.gradeText(d.jsonData.authenticateGrade),
                     d.jsonData.authorityName,
                 ]);
                 $(".course-detail-head").replaceWith(str);
