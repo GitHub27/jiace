@@ -7,6 +7,9 @@ $(function () {
         var relationDom = $("#" + type);
         relationDom.show().siblings().hide();
     });
+    $(".course-head").on('click', '.stydy', function () {
+        $(".mark,.fixed-login").show();
+    });
     var pageNumber = 1;
     var pageSize = 12;
     var courseid = $.getQueryStringByName('id')

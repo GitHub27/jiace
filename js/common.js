@@ -110,5 +110,15 @@
             }
             return result[1];
         },
+        _imgLoad: function (img, callback) {
+            $.each(img, function (index, entry) {
+                var timer = setInterval(function () {
+                    if (entry.complete) {
+                        callback(entry);
+                        clearInterval(timer)
+                    }
+                }, 100);
+            });
+        },
     })
 })($)

@@ -1084,16 +1084,25 @@ footer {
   background-color: #fff;
   border-radius: 3px;
 }
+.school-logo img{
+  height: 84px;
+  width: 84px;
+}
 
 .school-name {
-  padding: 23px 24px;
+  padding: 10px 24px 24px;
 }
 
 .school-name p {
+  padding-top: 12px;
   display: block;
   padding-bottom: 31px;
   font-size: 20px;
   color: #333;
+  width: 200px;
+  overflow-x: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
 }
 
 .school-info {
@@ -1102,6 +1111,7 @@ footer {
   margin: 0 20px;
   height: 89px;
   border-bottom: 2px solid #f1f1f1;
+  overflow: hidden;
 }
 
 .school-position {
