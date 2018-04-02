@@ -110,5 +110,34 @@
             }
             return result[1];
         },
+        imgLoad: function (img, callback) {
+            $.each(img, function (index, entry) {
+                var timer = setInterval(function () {
+                    if (entry.complete) {
+                        // callback(entry);
+                        $(entry).attr("src", $(entry).data('src'))
+                        clearInterval(timer)
+                    }
+
+                }, 100);
+            });
+        },
+        RetainedDecimalPlacesNF: function (num) {
+            var source = String(num).split(".");
+            source[0] = source[0].replace(new RegExp('(\\d)(?=(\\d{3})+$)', 'ig'), "$1,");
+            return source[0];
+        },
+        gradeText: function (no) {
+            switch (no) {
+                case '02':
+                    return '初级';
+                case '03':
+                    return '中级';
+                case '04':
+                    return '高级';
+                default:
+                    return no;
+            }
+        }
     })
 })($)

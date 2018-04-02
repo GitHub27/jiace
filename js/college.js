@@ -83,6 +83,9 @@ $(function () {
                     ]);
                 });
                 $(".course-list").html(str);
+                $(".course-list").find('.course-logo img').error(function () {
+                    $(this).attr('src', '/images/colloge-logo.png')
+                });
                 if (!iscb) {
                     pagination(d.jsonData.records);
                 }

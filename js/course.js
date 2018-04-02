@@ -1,7 +1,7 @@
 $(function () {
 
     var pageNumber = 1;
-    var pageSize = 20;
+    var pageSize = 10;
     getCourseBase();
     function getCourseBase(iscb) {
         $.AkmiiAjaxGet(window.api_list.course_base, { pageIndex: pageNumber, pageSize: pageSize }, false).then(function (d) {
@@ -16,7 +16,7 @@ $(function () {
                     str += template.format([
                         item.courseName,
                         item.courseImg || '/images/course-logo-big.png',
-                        item.authenticateGrade,
+                        $.gradeText(item.authenticateGrade),//等级转换
                         item.courseSuitableJob,
                         item.authorityName,
                         item.orderNum,
