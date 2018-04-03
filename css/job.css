@@ -70,10 +70,17 @@
     margin-left: 185px;
 }
 
+#income{
+    margin-bottom: 0;
+}
+#region{
+    margin-top: 0;
+}
+
 .option-list .option {
     display: inline-block;
     margin-right: 30px;
-    margin-top: 10px;
+    margin-top: 15px;
     padding: 1px 9px;
     cursor: pointer;
 }

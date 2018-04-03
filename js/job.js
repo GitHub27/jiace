@@ -139,7 +139,7 @@ $(function () {
                         salary,
                         item.salaryTypeValue,
                         item.age,
-                        'http://' + item.websiteUrl + '/job.html',
+                        "http://home.jiacer.com/" + item.domain + "/index.html",
                         item.websiteName,
                         item.demand,
                         item.loginName,
