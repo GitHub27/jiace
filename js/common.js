@@ -20,8 +20,8 @@
         college_qr: apiprefix + '/jiacerapps/api/school/qrcode/',
         schoollist_incourse: apiprefix + '/jiacerapps/api/school/pageByCourse',
         job_age_range: apiprefix + '/jiacerapps/api/gs/bridge/ageRange', //年龄条件
-        job_city: apiprefix + '/jiacerapps/api/common/area/city', //城市条件
-        job_province: apiprefix + '/jiacerapps/api/common/area/province', //省条件
+        job_city: apiprefix + '/jiacerapps/api/gs/bridge/city', //城市条件
+        job_province: apiprefix + '/jiacerapps/api/gs/bridge/province', //省条件
         job_service_income: apiprefix + '/jiacerapps/api/gs/bridge/serviceIncome', //薪资条件
         job_service_type: apiprefix + '/jiacerapps/api/gs/bridge/serviceType', //工种条件
         job_list: apiprefix + '/jiacerapps/api/gs/bridge/job', //工作查询
@@ -43,7 +43,7 @@
     $.extend({
         AkmiiAjaxPost: function (url, data, loading) {
             var dtd = $.Deferred();
-            if (loading) {};
+            if (loading) { };
             $.ajax(url, {
                 type: "POST",
                 data: JSON.stringify(data),
@@ -52,18 +52,18 @@
                 xhrFields: {
                     withCredentials: true
                 },
-                beforeSend: function (request) {},
+                beforeSend: function (request) { },
             }).then(function (d) {
-                if (loading) {}
+                if (loading) { }
                 dtd.resolve(d);
             }, function (d) {
-                if (loading) {}
+                if (loading) { }
                 dtd.reject(defaultError);
             });
             return dtd.promise();
         },
         AkmiiAjaxGet: function (url, data, loading) {
-            if (loading) {}
+            if (loading) { }
             var dtd = $.Deferred();
             url = url + $.ObjectToParameter(data);
             var thisurl = url;
