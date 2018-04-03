@@ -50,7 +50,7 @@
                 contentType: 'application/json',
                 dataType: "json",
                 xhrFields: {
-                    withCredentials: true
+                    // withCredentials: true
                 },
                 beforeSend: function (request) { },
             }).then(function (d) {
