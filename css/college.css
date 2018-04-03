@@ -52,14 +52,14 @@
     color: #888;
     font-size: 14px;
     /* line-height: 2; */
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .option-default {
     float: left;
     font-size: 14px;
     /* line-height: 2; */
-    margin-top: 10px;
+    margin-top: 20px;
     margin-right: 52px;
     padding: 1px 9px;
     cursor: pointer;
@@ -73,7 +73,7 @@
 .option-list .option {
     display: inline-block;
     margin-right: 30px;
-    margin-top: 10px;
+    margin-top: 19px;
     padding: 1px 9px;
     cursor: pointer;
 }
@@ -123,7 +123,7 @@
     z-index: 2;
     display: inline-block;
     /* margin-right: 30px; */
-    margin-top: 10px;
+    /* margin-top: 10px; */
     padding: 1px 20px;
     /* width: 68px; */
     height: 40px;
@@ -149,7 +149,7 @@
 
 .region .option-title,
 .region .option-default {
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .course {

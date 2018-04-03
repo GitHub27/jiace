@@ -289,7 +289,6 @@ $(function () {
             $('.option-item').hide();
             return;
         }
-
         $('.option-item').hide();
         $('.option-container').removeClass('region-active').css('z-index', '2');
         $("#incomeItemList .option-item").eq(_index).show().siblings().hide();
@@ -360,13 +359,13 @@ $(function () {
         //290是省份第一行距离最上面的高度
         //53是省份的高度
         if (top <= baseOffsetTop) {
-            $('#region .option-item').css('top', '51px').show();
-        } else if (top <= baseOffsetTop + 53) {
-            $('#region .option-item').css('top', '104px').show();
-        } else if (top <= baseOffsetTop + 53 * 2) {
-            $('#region .option-item').css('top', '157px').show();
+            $('#region .option-item').css('top', '42px').show();
+        } else if (top <= baseOffsetTop + 43) {
+            $('#region .option-item').css('top', '85px').show();
+        } else if (top <= baseOffsetTop + 43 * 2) {
+            $('#region .option-item').css('top', '128px').show();
         } else {
-            $('#region .option-item').css('top', '210px').show();
+            $('#region .option-item').css('top', '171px').show();
         }
         _self.css('z-index', '4').siblings().css('z-index', '2');
         _self.addClass('region-active');

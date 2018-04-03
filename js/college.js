@@ -29,9 +29,7 @@ $(function () {
                 var cityStr = '';
                 var cityTemplate = '<span data-pcode="' + pcode + '" data-areacode="{1}" data-areaname="{0}">{0}</span>';
                 d.jsonData.forEach(function (item) {
-                    item.childList.forEach(function (item2) {
-                        cityStr += cityTemplate.format([item2.areaName, item2.areaCode]);
-                    });
+                    cityStr += cityTemplate.format([item.areaName, item.areaCode]);
                 });
                 $(".option-item").html('<span  data-pcode="' + pcode + '" data-areacode="' + pcode + '" data-areaname="' + pname + '" class="region-def">全部</span>' + cityStr)
             }
@@ -201,13 +199,13 @@ $(function () {
             baseOffsetTop = $($('#province .option-container')[1]).offset().top,
             baseOffsetTop = baseOffsetTop || 227;
         if (top <= baseOffsetTop) {
-            $('.option-item').css('top', '51px').show();
-        } else if (top <= baseOffsetTop + 53) {
-            $('.option-item').css('top', '104px').show();
-        } else if (top <= baseOffsetTop + (53 * 2)) {
-            $('.option-item').css('top', '157px').show();
+            $('.option-item').css('top', '42px').show();
+        } else if (top <= baseOffsetTop + 43) {
+            $('.option-item').css('top', '85px').show();
+        } else if (top <= baseOffsetTop + (43 * 2)) {
+            $('.option-item').css('top', '128px').show();
         } else {
-            $('.option-item').css('top', '210px').show();
+            $('.option-item').css('top', '171px').show();
         }
         _self.css('z-index', '4').siblings().css('z-index', '2');
         _self.addClass('region-active');

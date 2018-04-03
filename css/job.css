@@ -97,7 +97,7 @@
     z-index: 3;
     left: 185px;
     right: 0;
-    top: 51px;
+    top: 42px;
     background-color: #fafafa;
     border: 1px solid #efefef;
     overflow: hidden;
@@ -123,7 +123,7 @@
     z-index: 2;
     display: inline-block;
     /* margin-right: 30px; */
-    margin-top: 10px;
+    /* margin-top: 10px; */
     padding: 1px 20px;
     /* width: 68px; */
     height: 40px;
@@ -149,7 +149,7 @@
 
 .region .option-title,
 .region .option-default {
-    margin-top: 20px;
+    margin-top: 12px;
 }
 
 .course {
