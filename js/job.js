@@ -121,7 +121,7 @@ $(function () {
             salary: salarySelected,
             salaryType: salaryTypeSelected
         }, false).then(function (d) {
-            if (d.jsonData && d.jsonData.rows.length > 0) {
+            if (d.jsonData && d.jsonData.rows && d.jsonData.rows.length > 0) {
                 var str = '';
                 var template = '<div class="job-detail"><div class="job-info-main"><h3>{0}</h3>\
                 <p class="salary">工资范围：<span>{1}{2}</span></p><p>年龄要求：<span>{3}</span></p>\

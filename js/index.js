@@ -80,7 +80,7 @@ $(function () {
                         salary = $.RetainedDecimalPlacesNF(item.salary);
                     }
                     str += template.format([
-                        'http://' + item.websiteUrl + '/job.html',
+                        '/html/job.html',
                         item.websiteName,
                         address,
                         item.demand,

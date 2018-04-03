@@ -4,6 +4,13 @@ $(function () {
     var collegeID = $.getQueryStringByName('id')
     var pageNumber = 1;
     var pageSize = 10;
+    $('#coursesList').on('click', '.course-buy', function () {
+        $(".mark,.fixed-buy-course").show();
+        return false;
+    });
+    $(".mark").click(function () {
+        $(".mark,.fixed-buy-course").hide();
+    });
     getCollegeDetail();
     getCourseList();
     getCollegeQR();
@@ -31,7 +38,7 @@ $(function () {
     function getCollegeQR() {
         $.AkmiiAjaxGet(window.api_list.college_qr + collegeID, { id: collegeID }, false).then(function (d) {
             if (d.result) {
-                $("#college-qr").attr('src', d.result);
+                $("#college-qr,#buy-course-qr").attr('src', d.result);
                 $(".qrlogin-img").show();
             }
         }, function () {
@@ -65,7 +72,7 @@ $(function () {
                 var template = '<a href="/html/course-detail.html?id={7}" class="course-warp {0}"><div class="c-line1"><h4>{1}</h4><p><img src="/images/online.png">\
                 <span>{6}</span></p></div><hr><div class="c-line2">适合工种：{2}</div><div class="c-line3">{3}</div>\
                 <hr class="w100"><div class="c-line5"><p class="price"><span class="price-now">￥{4}</span>\
-                <span class="price-old">￥{5}</span></p><p><img src="/images/buy.png"></p></div></a>';
+                <span class="price-old">￥{5}</span></p><p class="course-buy"><img src="/images/buy.png"></p></div></a>';
                 d.jsonData.rows.forEach(function (item, index) {
                     str += template.format([
                         (index % 2) == 0 ? '' : 'odd',

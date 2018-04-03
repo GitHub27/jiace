@@ -5,7 +5,7 @@ $(function () {
     getCourseBase();
     function getCourseBase(iscb) {
         $.AkmiiAjaxGet(window.api_list.course_base, { pageIndex: pageNumber, pageSize: pageSize }, false).then(function (d) {
-            if (d.jsonData) {
+            if (d.jsonData && d.jsonData.rows && d.jsonData.rows.length > 0) {
                 var str = '';
                 var template = '<div data-href="/html/course-detail.html?id={6}" class="course-item"><div class="course-detail"><div class="course-column course-logo">\
                 <img src="{1}"></div><div class="course-column"><p class="course-name">{0}<span class="course-online">\

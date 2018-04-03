@@ -9,9 +9,9 @@
     var apiprefix = "http://139.224.49.192:9006";
     window.api_list = {
         /**省份 */
-        province: apiprefix + "/jiacerapps/api/common/area/province",
-        city: apiprefix + "/jiacerapps/api/common/area/city",
-        course_base: apiprefix + "/jiacerapps/course/base/page/",
+        province: apiprefix + "/jiacerapps/api/common/area/province",//学院-省条件
+        city: apiprefix + "/jiacerapps/api/common/area/city",//学院-市条件
+        course_base: apiprefix + "/jiacerapps/course/base/page/",//
         course_usable: apiprefix + "/jiacerapps/course/base/usable/",
         course_detail: apiprefix + '/jiacerapps/course/base/',
         college_filter: apiprefix + '/jiacerapps/api/school/pageSchoolwithLearn',
@@ -20,8 +20,8 @@
         college_qr: apiprefix + '/jiacerapps/api/school/qrcode/',
         schoollist_incourse: apiprefix + '/jiacerapps/api/school/pageByCourse',
         job_age_range: apiprefix + '/jiacerapps/api/gs/bridge/ageRange', //年龄条件
-        job_city: apiprefix + '/jiacerapps/api/gs/bridge/city', //城市条件
-        job_province: apiprefix + '/jiacerapps/api/gs/bridge/province', //省条件
+        job_city: apiprefix + '/jiacerapps/api/gs/bridge/city', //工作-城市条件
+        job_province: apiprefix + '/jiacerapps/api/gs/bridge/province', //工作-省条件
         job_service_income: apiprefix + '/jiacerapps/api/gs/bridge/serviceIncome', //薪资条件
         job_service_type: apiprefix + '/jiacerapps/api/gs/bridge/serviceType', //工种条件
         job_list: apiprefix + '/jiacerapps/api/gs/bridge/job', //工作查询
@@ -76,7 +76,7 @@
                 url: thisurl,
                 dataType: "json",
                 xhrFields: {
-                    withCredentials: true
+                    // withCredentials: true
                 },
                 beforeSend: function (request) {
 

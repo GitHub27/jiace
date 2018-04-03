@@ -1365,7 +1365,7 @@ ul.tab {
   display: none;
 }
 
-.fixed-login {
+.fixed-login,.fixed-buy-course {
   position: fixed;
   top: 50%;
   bottom: 0;
@@ -1387,6 +1387,10 @@ ul.tab {
   height: 268px;
   margin: 0 auto;
   padding-top: 42px;
+}
+.fixed-buy-course .wecht-login-img img{
+  width: 268px;
+  height: 268px;
 }
 
 .wecht-login-img img {

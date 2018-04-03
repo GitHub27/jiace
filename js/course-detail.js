@@ -8,7 +8,7 @@ $(function () {
         relationDom.show().siblings().hide();
     });
     $(".course-head").on('click', '.stydy', function () {
-        $(".mark,.fixed-login").show();
+        $(".tablist span").eq(2).click();
     });
     var pageNumber = 1;
     var pageSize = 12;
@@ -72,7 +72,7 @@ $(function () {
     //学院列表
     function getCourseList(iscb) {
         $.AkmiiAjaxGet(window.api_list.schoollist_incourse, { "courseId": courseid, 'pageIndex': pageNumber, 'pageSize': pageSize }, false).then(function (d) {
-            if (d.jsonData) {
+            if (d.jsonData && d.jsonData.rows && d.jsonData.rows.length > 0) {
                 var str = '';
                 var template = '<div data-href="/html/college-detail.html?id={6}" class="course-item"><div class="course-detail"><div class="course-column course-logo">\
                 <img src="{0}"></div><div class="course-column"><p class="course-name">{1}</p><p class="course-info">\
