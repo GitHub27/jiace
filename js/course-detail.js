@@ -52,7 +52,7 @@ $(function () {
                 </div><img class="stydy" src="/images/stydy.png"></div></div>';
                 str = template.format([
                     d.jsonData.courseImg || "/images/course-detail-logo.png",
-                    gradeImg(d.jsonData.authenticateGrade),
+                    '',
                     d.jsonData.courseName,
                     d.jsonData.orderNum,
                     d.jsonData.courseSuitableJob,
